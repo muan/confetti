@@ -1,0 +1,72 @@
+<body>
+<script type="text/javascript">
+  var ipc = require('electron').ipcRenderer
+  var countdown
+  ipc.on('start-countdown', startCountdown)
+  ipc.on('stop-countdown', stopCountdown)
+
+  function startCountdown () {
+    document.body.classList.add('fadeout')
+    countdown = setTimeout(function () {
+      document.body.classList.remove('fadeout')
+      ipc.send('abort')
+    }, 5000)
+  }
+
+  function stopCountdown () {
+    document.body.classList.remove('fadeout')
+    clearTimeout(countdown)
+  }
+
+  document.body.innerHTML = ""
+  var colors = ['yellow', 'red', 'green', 'aqua', 'blue', 'purple', 'orange', 'pink']
+  var degrees = [30, 45, 60, 70, 115, 160]
+
+  for (i = 0; i < 300; i++) {
+    var confetti = document.createElement("div")
+    confetti.classList.add("bit")
+    confetti.style.left = Math.random() * document.body.clientWidth + 'px'
+    confetti.style.top = Math.random() * document.body.clientHeight + 'px'
+    confetti.style.backgroundColor = colors[i % colors.length]
+    confetti.style.transform = 'rotate(' + degrees[i % degrees.length] + 'deg)'
+    confetti.style.animation = 'fall ' + Math.random() * 20 + 5 + 's linear infinite'
+    document.body.appendChild(confetti)
+  }
+</script>
+<style type="text/css">
+  body {
+    opacity: 1;
+    color: white;
+    text-align: center;
+    font-size: 100px;
+    font-family: 'CUBANO';
+    padding: 20%;
+    transition: none;
+  }
+
+  .fadeout {
+    transition: opacity 2s 3s;
+    opacity: 0;
+  }
+
+  .bit {
+    position: absolute;
+    width: 10px;
+    height: 5px;
+    background: red;
+  }
+
+  @keyframes fall {
+    0% { margin-top: -50%; }
+    100% { margin-top: 100%; }
+  }
+
+  @keyframes fadeout {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+</style>
+<div class="confetti">
+  You're awesome!
+</div>
+</body>
