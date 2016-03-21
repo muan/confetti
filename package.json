@@ -4,7 +4,8 @@
   "description": "CONFETTI.",
   "main": "index.js",
   "scripts": {
-    "app": "electron ."
+    "app": "electron .",
+    "build": "electron-packager . Confetti --platform=darwin --arch=x64 --version=0.37.2 --overwrite"
   },
   "repository": {
     "type": "git",
