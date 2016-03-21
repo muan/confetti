@@ -4,6 +4,7 @@ var ipc = require('electron').ipcMain
 var mb = menubar({
   transparent: true,
   width: 100,
+  hasShadow: false,
   height: 100,
   tooltip: 'Who\'s awesome?!'
 })
