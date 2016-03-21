@@ -28,7 +28,7 @@
     confetti.style.left = Math.random() * document.body.clientWidth + 'px'
     confetti.style.top = Math.random() * document.body.clientHeight + 'px'
     confetti.style.backgroundColor = colors[i % colors.length]
-    confetti.style.transform = 'rotate(' + degrees[i % degrees.length] + 'deg)'
+    confetti.style.transform = 'skewY(20deg) rotate(' + degrees[i % degrees.length] + 'deg)'
     confetti.style.animation = 'fall ' + Math.random() * 20 + 5 + 's linear infinite'
     confetti.style.boxShadow = '50px -100px 0 0 white'
     if (Math.random() * 10 % 3 == 1) confetti.style.zIndex = -1
@@ -55,13 +55,13 @@
   .bit {
     position: absolute;
     width: 10px;
-    height: 5px;
+    height: 3px;
     background: red;
   }
 
   @keyframes fall {
     0% { margin-top: -50%; }
-    100% { margin-top: 100%; }
+    100% { margin-top: 100%; box-shadow: 200px 0px 0 0 white; }
   }
 
   @keyframes fadeout {
