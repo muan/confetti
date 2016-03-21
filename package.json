@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/muan/confetti/issues"
   },
-  "homepage": "https://github.com/muan/confetti#readme"
+  "homepage": "https://github.com/muan/confetti#readme",
+  "devDependencies": {
+    "electron-packager": "^5.2.1"
+  }
 }
